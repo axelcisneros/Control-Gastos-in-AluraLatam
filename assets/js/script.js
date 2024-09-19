@@ -4,16 +4,12 @@ let listaValoresGastos = [];
 function clickBoton() {
     let nombreGasto = document.getElementById('nombreGasto').value;
     let valorGasto = document.getElementById('valorGasto').value;
+    if(valorGasto >= '150'){
+        alert("Realizaste un gasto elevado revisalo");
 
-    console.log(nombreGasto);
-    console.log(valorGasto);
-
+    }
     listaNombresGastos.push(nombreGasto);
     listaValoresGastos.push(valorGasto);
-
-    console.log(listaNombresGastos);
-    console.log(listaValoresGastos);
-    //alert('Click del usuario');
     actualizarListaGastos();
 }
 
@@ -26,6 +22,7 @@ function actualizarListaGastos() {
         const valorGasto = Number(listaValoresGastos[posicion]);
         htmlLista += `<li>${elemento} - USD ${valorGasto.toFixed(2)}
                         <button id="botonFormulario" onclick="eliminarGasto(${posicion});">Eliminar</button>
+                        <button id="botonFormulario" onclick="modificarGasto(${posicion});">Modificar</button>
                     </li>`;
         //Calculamos el total de gastos
         totalGastos += Number(valorGasto);
@@ -45,4 +42,8 @@ function eliminarGasto(posicion){
     listaNombresGastos.splice(posicion,1);
     listaValoresGastos.splice(posicion,1);
     actualizarListaGastos();
+}
+
+function modificarGasto(){
+    alert("Quieres modificar los datos?");
 }
